@@ -2,7 +2,6 @@ import {
   IconArrowLeft,
   IconBulb,
   IconDeviceMobile,
-  IconInfoCircle,
   IconLanguage,
   IconMusic,
   IconSparkles,
@@ -84,8 +83,6 @@ export function GameSettingsPage() {
           <IconSparkles className="game-inner-header-icon" aria-hidden="true" />
         </header>
 
-        <p className="game-inner-intro">{copy.settingsIntro}</p>
-
         <section
           className="game-settings-section"
           aria-labelledby="language-heading"
@@ -161,22 +158,6 @@ export function GameSettingsPage() {
                 </button>
               );
             })}
-          </div>
-        </section>
-
-        <section className="game-settings-section game-source-notice">
-          <div className="game-settings-title">
-            <IconInfoCircle aria-hidden="true" />
-            <div>
-              <h2>
-                {preferences.language === 'zh' ? '资源说明' : 'Asset notice'}
-              </h2>
-              <p>
-                {preferences.language === 'zh'
-                  ? '部分游戏音频来自公开可获取的应用资源，仅用于学习和研究；如有侵权请联系删除。'
-                  : 'Some game audio was sourced from publicly obtainable app assets for learning and research. Contact us for removal if needed.'}
-              </p>
-            </div>
           </div>
         </section>
       </main>

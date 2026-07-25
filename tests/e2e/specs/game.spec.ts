@@ -138,6 +138,21 @@ test.describe('Super Blocks', () => {
     expect(errors).toEqual([]);
   });
 
+  test('omits descriptive text below the how-to-play and settings titles', async ({
+    page,
+  }) => {
+    const errors = await openHome(page);
+    await page.getByTestId('home-how-to-play').click();
+    await expect(page).toHaveURL(/\/how-to-play$/);
+    await expect(page.locator('.game-inner-intro')).toHaveCount(0);
+
+    await page.goto('/');
+    await page.getByTestId('home-settings').click();
+    await expect(page).toHaveURL(/\/settings$/);
+    await expect(page.locator('.game-inner-intro')).toHaveCount(0);
+    expect(errors).toEqual([]);
+  });
+
   test('persists language and independent preferences', async ({ page }) => {
     const errors = await openHome(page);
     await page.getByTestId('home-settings').click();
@@ -169,7 +184,6 @@ test.describe('Super Blocks', () => {
     await expect(page.getByTestId('game-settings-page')).toHaveClass(
       /reduce-game-motion/
     );
-    await expect(page.getByText('如有侵权请联系删除')).toBeVisible();
     expect(errors).toEqual([]);
   });
 

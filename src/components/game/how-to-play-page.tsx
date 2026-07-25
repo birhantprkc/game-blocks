@@ -26,8 +26,6 @@ export function HowToPlayPage() {
           <IconBook2 className="game-inner-header-icon" aria-hidden="true" />
         </header>
 
-        <p className="game-inner-intro">{copy.howToPlayIntro}</p>
-
         <section className="game-settings-section guide-section">
           <div className="game-settings-title">
             <IconBook2 aria-hidden="true" />

@@ -38,7 +38,6 @@ export interface GameCopy {
   greatGame: string;
   hints: string;
   hintsDescription: string;
-  howToPlayIntro: string;
   howToPlay: string;
   howToPlaySteps: readonly string[];
   language: string;
@@ -75,7 +74,6 @@ export interface GameCopy {
   selectSquare: (row: number, column: number, state: string) => string;
   settings: string;
   settingsDescription: string;
-  settingsIntro: string;
   sound: string;
   soundDescription: string;
   start: string;
@@ -142,7 +140,6 @@ export const GAME_COPY: Record<GameLanguage, GameCopy> = {
     greatGame: 'Great game!',
     hints: 'Placement hints',
     hintsDescription: 'Show valid and blocked positions while moving a piece.',
-    howToPlayIntro: 'Learn the rules and how scoring works.',
     howToPlay: 'How to play',
     howToPlaySteps: [
       'Drag a piece onto the board, or tap a piece and then a square.',
@@ -184,7 +181,6 @@ export const GAME_COPY: Record<GameLanguage, GameCopy> = {
       `Row ${row}, column ${column}, ${state}`,
     settings: 'Settings',
     settingsDescription: 'Adjust sound, feedback, and accessibility.',
-    settingsIntro: 'Choose your language and preferred game feedback.',
     sixPlusLineBonus: 'Clear 6+ lines at once: +300',
     sound: 'Sound effects',
     soundDescription: 'Play feedback sounds for placements and line clears.',
@@ -248,7 +244,6 @@ export const GAME_COPY: Record<GameLanguage, GameCopy> = {
     greatGame: '本局完成！',
     hints: '落点提示',
     hintsDescription: '移动方块时显示可放置或不可放置的位置。',
-    howToPlayIntro: '了解游戏规则和计分规则。',
     howToPlay: '玩法介绍',
     howToPlaySteps: [
       '把方块拖到棋盘，或先点击方块再点击目标格。',
@@ -289,7 +284,6 @@ export const GAME_COPY: Record<GameLanguage, GameCopy> = {
       `第 ${row} 行，第 ${column} 列，${state}`,
     settings: '游戏设置',
     settingsDescription: '调整声音、反馈效果和辅助功能。',
-    settingsIntro: '选择游戏语言和偏好的反馈效果。',
     sixPlusLineBonus: '单次消除 6 条及以上：+300 分',
     sound: '音效',
     soundDescription: '放置方块和消除时播放轻柔的反馈音效。',
