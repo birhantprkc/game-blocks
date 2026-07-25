@@ -79,6 +79,15 @@ credentials must not be added to the Worker configuration or uploaded with
 | `/settings` | Language and game preferences |
 | `/how-to-play` | Rules and scoring |
 
+## Related open-source games
+
+This project belongs to the same small collection of standalone browser games:
+
+- [game-poly](https://github.com/open-fox/game-poly) — a browser port of the
+  original level-based 8×8 block-fitting puzzle
+- [game-sudoku](https://github.com/open-fox/game-sudoku) — MimoDoku, a cozy
+  cat-placement Sudoku with handcrafted and daily puzzles
+
 ## Build more with TanStarter
 
 Super Blocks is intentionally kept small and focused, but it originally grew
