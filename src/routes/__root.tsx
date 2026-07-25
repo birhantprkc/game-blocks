@@ -8,7 +8,6 @@ import {
 import '@fontsource/lilita-one/400.css';
 import gameCss from '../game.css?url';
 import { GamePreferencesProvider } from '@/components/game/game-preferences';
-import { siteUrl } from '@/lib/site';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -25,32 +24,10 @@ export const Route = createRootRoute({
         content: 'A relaxing browser-based block puzzle game.',
       },
       { name: 'theme-color', content: '#4865c5' },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:site_name', content: 'Super Blocks' },
-      { property: 'og:title', content: 'Super Blocks' },
-      {
-        property: 'og:description',
-        content: 'A relaxing browser-based block puzzle game.',
-      },
-      { property: 'og:url', content: siteUrl('/') },
-      {
-        property: 'og:image',
-        content: siteUrl('/og.png'),
-      },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: 'Super Blocks' },
-      {
-        name: 'twitter:description',
-        content: 'A relaxing browser-based block puzzle game.',
-      },
-      {
-        name: 'twitter:image',
-        content: siteUrl('/og.png'),
-      },
+      { property: 'og:image', content: '/og.png' },
     ],
     links: [
       { rel: 'stylesheet', href: gameCss },
-      { rel: 'canonical', href: siteUrl('/') },
       {
         rel: 'apple-touch-icon',
         sizes: '180x180',

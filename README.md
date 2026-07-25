@@ -63,13 +63,10 @@ Deploy the production Worker:
 pnpm run deploy
 ```
 
-To deploy under a different domain, set the build-time `VITE_BASE_URL`
-variable (see `.env.example`) so canonical and social metadata point at your
-own URL:
-
-```bash
-VITE_BASE_URL=https://your-domain.example pnpm run deploy
-```
+The application does not require runtime environment variables or Worker
+secrets. Wrangler uses your local Cloudflare CLI login to deploy; those
+credentials must not be added to the Worker configuration or uploaded with
+`wrangler secret put`.
 
 ## Routes
 

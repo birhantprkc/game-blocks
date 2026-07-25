@@ -71,7 +71,7 @@ test.describe('Super Blocks', () => {
     await expect(page.getByTestId('home-how-to-play')).toBeVisible();
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       'content',
-      'https://blocks.mksaas.link/og.png'
+      '/og.png'
     );
     await expect(
       page.locator('link[rel="icon"][sizes="32x32"]')
