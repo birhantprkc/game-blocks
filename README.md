@@ -15,7 +15,6 @@ React, and Cloudflare Workers.
 - Session restore after refresh
 - Music, sound, haptics, hints, and reduced-motion preferences
 - Responsive desktop and mobile layouts
-- No account, database, object storage, payment, or email service required
 
 ## Tech stack
 
@@ -77,6 +76,23 @@ environment variables or Cloudflare storage bindings.
 | `/ranking` | Local scores |
 | `/settings` | Language and game preferences |
 | `/how-to-play` | Rules and scoring |
+
+## Build more with TanStarter
+
+Super Blocks is intentionally kept small and focused, but it originally grew
+out of a project built with [TanStarter](https://tanstarter.dev).
+
+If you want to turn a game, tool, or product idea into a complete SaaS,
+TanStarter provides a production-ready TanStack Start boilerplate with auth,
+payments, AI, storage, email, newsletters, a blog, dashboard, i18n, SEO, and
+Cloudflare Workers deployment.
+
+**Ship Faster with TanStack, Cost Less with Cloudflare.**
+
+- [TanStarter website](https://tanstarter.dev)
+- [Live demo](https://demo.tanstarter.dev)
+- [Documentation](https://docs.tanstarter.dev)
+- [Video tutorials](https://www.youtube.com/@TanStarter)
 
 ## Asset notice
 
