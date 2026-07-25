@@ -3,7 +3,7 @@
 A lightweight, browser-based block puzzle game built with TanStack Start,
 React, and Cloudflare Workers.
 
-![Super Blocks menu](./home.png)
+![Super Blocks](./public/og.png)
 
 ## Features
 
@@ -41,7 +41,7 @@ pnpm dev
 
 The local application is available at `http://localhost:3000`.
 
-## Quality checks
+## Test
 
 ```bash
 pnpm check
@@ -50,53 +50,22 @@ pnpm e2e
 pnpm build
 ```
 
-Install the Playwright browser when needed:
-
-```bash
-pnpm e2e:install
-```
-
-## Production build
-
-Build and validate the Cloudflare Worker locally:
-
-```bash
-pnpm build
-pnpm exec wrangler deploy --dry-run
-```
-
 ## Deployment
 
-The production Worker is configured for the custom domain
-`blocks.mksaas.link`.
-
-Authenticate Wrangler interactively:
+Log in to Cloudflare once:
 
 ```bash
 pnpm exec wrangler login
 ```
 
-Alternatively, provide deployment credentials to the local shell:
+Deploy the production Worker:
 
 ```bash
-export CLOUDFLARE_ACCOUNT_ID="your-account-id"
-export CLOUDFLARE_API_TOKEN="your-api-token"
+pnpm run deploy
 ```
 
-Then deploy:
-
-```bash
-pnpm deploy
-```
-
-The Worker has no D1, R2, KV, Durable Object, or external API bindings.
-
-`CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` are deployment credentials,
-not Worker runtime variables. Do not upload them with
-`wrangler secret put`; the running game does not need them.
-
-This repository intentionally does not include GitHub Actions deployment.
-Builds and deployments are run locally with pnpm and Wrangler.
+The Worker is deployed to `blocks.mksaas.link`. It does not require runtime
+environment variables or Cloudflare storage bindings.
 
 ## Routes
 

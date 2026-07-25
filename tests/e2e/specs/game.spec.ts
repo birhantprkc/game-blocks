@@ -69,6 +69,13 @@ test.describe('Super Blocks', () => {
     );
     await expect(page.getByTestId('home-settings')).toBeVisible();
     await expect(page.getByTestId('home-how-to-play')).toBeVisible();
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+      'content',
+      'https://blocks.mksaas.link/og.png'
+    );
+    await expect(
+      page.locator('link[rel="icon"][sizes="32x32"]')
+    ).toHaveAttribute('href', '/favicon-32x32.png');
     expect(errors).toEqual([]);
   });
 

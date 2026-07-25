@@ -3,20 +3,24 @@
 ## Font
 
 The project uses **Lilita One** through the `@fontsource/lilita-one` package.
-Refer to that package and the upstream font project for its current license.
 
 ## Icons
 
-Interface icons are provided by `@tabler/icons-react`. Refer to the package and
-the upstream Tabler Icons project for its current license.
+Interface icons are provided by `@tabler/icons-react`.
+
+## TanStarter branding assets
+
+The fallback logo and favicon files are derived from the TanStarter project
+assets. The game itself uses a CSS-rendered Super Blocks wordmark, while these
+files provide browser and install icons.
 
 ## Game audio
 
 The files under `public/game/audio/` were extracted from publicly obtainable
 Android application assets and are included for learning and research.
 
-They are not covered by this repository's MIT source-code license. No ownership
-of those audio recordings is claimed.
+Rights holders may request review or removal by opening an issue or contacting
+the repository maintainer.
 
 | Project file | Original application asset path |
 | --- | --- |
@@ -37,6 +41,3 @@ of those audio recordings is claimed.
 | `challenge-complete.ogg` | `assets/assets/mainTraits/native/43/4351d6f1-c09b-4446-a9f1-d27fe9bc3c84.19735.ogg` |
 | `game-over.ogg` | `assets/assets/mainTraits/native/94/9470dced-36ba-48bb-8575-c1261ba55733.f4f16.ogg` |
 | `gameplay-music.ogg` | `assets/assets/resources/native/31/3105bfa1-2c4f-43fb-a0c6-d089ba26c89a.15860.ogg` |
-
-Rights holders may request review or removal by opening an issue or contacting
-the repository maintainer.

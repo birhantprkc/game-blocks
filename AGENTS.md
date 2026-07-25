@@ -13,7 +13,7 @@ pnpm check
 pnpm test
 pnpm e2e
 pnpm build
-pnpm deploy
+pnpm run deploy
 ```
 
 Deployment credentials are local CLI credentials only. They are not runtime
