@@ -15,9 +15,6 @@ pnpm e2e
 pnpm build
 ```
 
-Cloudflare deployment is intentionally local-only; this repository does not
-use GitHub Actions for builds or deployments.
-
 ## Project boundaries
 
 - Do not commit secrets, `.env` files, or Cloudflare credentials.
