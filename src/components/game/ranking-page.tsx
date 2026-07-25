@@ -1,4 +1,10 @@
-import { IconArrowLeft, IconCrown, IconTrophy } from '@tabler/icons-react';
+import {
+  IconArrowLeft,
+  IconCalendarEvent,
+  IconCrown,
+  IconInfinity,
+  IconTrophy,
+} from '@tabler/icons-react';
 import { Link } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import { GAME_COPY } from '@/components/game/game-copy';
@@ -16,6 +22,8 @@ export function RankingPage() {
   const [bestScore, setBestScore] = useState(0);
   const [history, setHistory] = useState<ScoreRecord[]>([]);
   const copy = GAME_COPY[preferences.language];
+  const classicBest = getModeBest(history, 'classic');
+  const dailyBest = getModeBest(history, 'daily');
 
   useEffect(() => {
     try {
@@ -23,7 +31,7 @@ export function RankingPage() {
       setBestScore(readBestScore());
       setHistory(readScoreHistory());
     } catch {
-      // An empty ranking is a safe fallback when storage is unavailable.
+      // Zero scores are a safe fallback when storage is unavailable.
     }
   }, []);
 
@@ -41,36 +49,34 @@ export function RankingPage() {
           />
         </header>
 
-        <p className="game-inner-intro">{copy.localRankingDescription}</p>
+        <section className="score-summary" aria-label={copy.ranking}>
+          <article className="ranking-best-card">
+            <IconCrown aria-hidden="true" />
+            <span>{copy.yourBest}</span>
+            <strong>{bestScore.toLocaleString()}</strong>
+          </article>
 
-        <div className="ranking-best-card">
-          <IconCrown aria-hidden="true" />
-          <span>{copy.yourBest}</span>
-          <strong>{bestScore.toLocaleString()}</strong>
-        </div>
-
-        {history.length > 0 ? (
-          <ol className="standalone-score-list">
-            {history.map((entry, index) => (
-              <li key={entry.id}>
-                <span className="leaderboard-position">{index + 1}</span>
-                <span className="ranking-mode-badge">
-                  {entry.mode === 'daily' ? copy.daily : copy.classic}
-                </span>
-                <strong>
-                  {entry.mode === 'daily' ? copy.daily : copy.classic}
-                </strong>
-                <b>{entry.score.toLocaleString()}</b>
-              </li>
-            ))}
-          </ol>
-        ) : (
-          <section className="standalone-empty-ranking">
-            <IconTrophy aria-hidden="true" />
-            <p>{copy.localRankingDescription}</p>
-          </section>
-        )}
+          <div className="mode-best-grid">
+            <article className="mode-best-card">
+              <IconInfinity aria-hidden="true" />
+              <span>{copy.classic}</span>
+              <strong>{classicBest.toLocaleString()}</strong>
+            </article>
+            <article className="mode-best-card">
+              <IconCalendarEvent aria-hidden="true" />
+              <span>{copy.daily}</span>
+              <strong>{dailyBest.toLocaleString()}</strong>
+            </article>
+          </div>
+        </section>
       </main>
     </GamePageFrame>
+  );
+}
+
+function getModeBest(history: ScoreRecord[], mode: ScoreRecord['mode']) {
+  return history.reduce(
+    (best, entry) => (entry.mode === mode ? Math.max(best, entry.score) : best),
+    0
   );
 }

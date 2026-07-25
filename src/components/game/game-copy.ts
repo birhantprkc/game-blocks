@@ -43,8 +43,6 @@ export interface GameCopy {
   language: string;
   languageDescription: string;
   keepPlaying: string;
-  localRanking: string;
-  localRankingDescription: string;
   multiLineBonus: string;
   sixPlusLineBonus: string;
   music: string;
@@ -149,8 +147,6 @@ export const GAME_COPY: Record<GameLanguage, GameCopy> = {
     language: 'Game language',
     languageDescription: 'Choose the language used throughout the game.',
     keepPlaying: 'Keep playing',
-    localRanking: 'Local',
-    localRankingDescription: 'Your highest score on this device.',
     multiLineBonus:
       'Clear 2 / 3 / 4 / 5 lines at once: +20 / +60 / +120 / +200',
     music: 'Background music',
@@ -165,8 +161,8 @@ export const GAME_COPY: Record<GameLanguage, GameCopy> = {
     playAgain: 'Play again',
     playNow: 'Play now',
     preferences: 'Preferences',
-    ranking: 'Ranking',
-    rankingDescription: 'View your local high scores.',
+    ranking: 'Best Scores',
+    rankingDescription: 'View your best score for each mode',
     readyToBlast: 'Ready to blast?',
     reduceMotion: 'Reduced motion',
     reduceMotionDescription: 'Minimize movement and transition effects.',
@@ -253,8 +249,6 @@ export const GAME_COPY: Record<GameLanguage, GameCopy> = {
     language: '游戏语言',
     languageDescription: '选择整个游戏界面使用的语言。',
     keepPlaying: '继续游戏',
-    localRanking: '本地排行',
-    localRankingDescription: '当前设备的最高分。',
     multiLineBonus: '单次消除 2 / 3 / 4 / 5 条：+20 / +60 / +120 / +200 分',
     music: '背景音乐',
     musicDescription: '游戏过程中播放轻柔的背景音乐。',
@@ -268,8 +262,8 @@ export const GAME_COPY: Record<GameLanguage, GameCopy> = {
     playAgain: '再玩一局',
     playNow: '开始游戏',
     preferences: '偏好设置',
-    ranking: '排行榜',
-    rankingDescription: '查看本机最高分。',
+    ranking: '最佳成绩',
+    rankingDescription: '查看各模式的最佳成绩',
     readyToBlast: '准备好消除了吗？',
     reduceMotion: '减少动态效果',
     reduceMotionDescription: '降低移动和过渡动画，减少视觉干扰。',

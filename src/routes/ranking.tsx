@@ -3,5 +3,5 @@ import { RankingPage } from '@/components/game/ranking-page';
 
 export const Route = createFileRoute('/ranking')({
   component: RankingPage,
-  head: () => ({ meta: [{ title: 'Ranking — Super Blocks' }] }),
+  head: () => ({ meta: [{ title: 'Best Scores — Super Blocks' }] }),
 });

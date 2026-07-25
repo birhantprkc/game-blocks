@@ -2231,41 +2231,10 @@ body {
   text-align: center;
 }
 
-.ranking-tabs {
-  display: grid;
-  padding: 4px;
-  margin: 18px auto 0;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  border-radius: 14px;
-  background: rgb(11 35 96 / 55%);
-  box-shadow: inset 0 2px 5px rgb(5 14 50 / 28%);
-}
-
-.ranking-tabs button {
-  min-height: 40px;
-  padding: 6px 14px;
-  color: rgb(222 240 255 / 72%);
-  border: 0;
-  border-radius: 11px;
-  background: transparent;
-  font: inherit;
-  font-size: 13px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.ranking-tabs button[aria-selected="true"] {
-  color: #2b4384;
-  background: linear-gradient(180deg, #fff, #dbe8ff);
-  box-shadow: 0 2px 5px rgb(4 13 47 / 26%);
-}
-
 .game-page-card,
 .game-settings-section,
 .ranking-best-card,
-.standalone-score-list,
-.standalone-empty-ranking {
+.mode-best-card {
   color: #314783;
   border: 2px solid rgb(255 255 255 / 62%);
   border-radius: 22px;
@@ -2559,68 +2528,43 @@ body {
   font-size: 26px;
 }
 
-.standalone-score-list {
+.score-summary {
   display: grid;
-  padding: 14px;
-  margin: 16px 0 0;
-  gap: 8px;
-  list-style: none;
+  margin-top: 28px;
+  gap: 16px;
 }
 
-.standalone-score-list li {
+.mode-best-grid {
   display: grid;
-  min-height: 54px;
-  padding: 8px 10px;
-  grid-template-columns: 30px 36px 1fr auto;
-  align-items: center;
-  gap: 8px;
-  border-radius: 13px;
-  background: #d7e3f8;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
-.ranking-mode-badge {
+.mode-best-card {
   display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  color: white;
-  border-radius: 10px;
-  background: #5e7bd6;
-}
-
-.standalone-score-list li > strong {
-  color: #38508d;
-  font-size: 12px;
-}
-
-.standalone-score-list li > b {
-  color: #263d7c;
-  font-size: 17px;
-}
-
-.standalone-empty-ranking {
-  display: grid;
-  min-height: 190px;
-  padding: 26px;
-  margin-top: 16px;
+  min-height: 142px;
+  padding: 18px;
   place-items: center;
   align-content: center;
-  gap: 12px;
+  gap: 8px;
   text-align: center;
 }
 
-.standalone-empty-ranking svg {
-  width: 52px;
-  height: 52px;
-  color: #e2ab14;
+.mode-best-card svg {
+  width: 34px;
+  height: 34px;
+  color: #5e7bd6;
 }
 
-.standalone-empty-ranking p {
-  max-width: 280px;
-  margin: 0;
-  color: #6879a6;
+.mode-best-card span {
+  color: #6373a0;
   font-size: 13px;
-  line-height: 1.5;
+  font-weight: 800;
+}
+
+.mode-best-card strong {
+  color: #263d7c;
+  font-size: 28px;
 }
 
 @media (max-height: 760px) {

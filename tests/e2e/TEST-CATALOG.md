@@ -10,5 +10,5 @@
 | Classic scoring | A deterministic opening can complete a line and persist score 18. |
 | Session restore | Refresh and returning to `/` resume an unfinished game. |
 | Preferences | Language, music, sound, and reduced motion persist independently. |
-| Local ranking | The ranking shows local best and history without account controls. |
+| Best scores | The score page summarizes the overall, classic, and daily best scores stored on the device. |
 | Assets and routing | Required audio is served and invalid modes redirect to `/`. |

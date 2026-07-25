@@ -65,7 +65,7 @@ test.describe('Super Blocks', () => {
     await expect(page.getByTestId('start-classic')).toBeVisible();
     await expect(page.getByTestId('start-daily')).toBeVisible();
     await expect(page.getByTestId('home-ranking')).toContainText(
-      'View your local high scores.'
+      'View your best score for each mode.'
     );
     await expect(page.getByTestId('home-settings')).toBeVisible();
     await expect(page.getByTestId('home-how-to-play')).toBeVisible();
@@ -187,9 +187,7 @@ test.describe('Super Blocks', () => {
     expect(errors).toEqual([]);
   });
 
-  test('shows only local scores in the standalone ranking', async ({
-    page,
-  }) => {
+  test('shows an overall and per-mode best score summary', async ({ page }) => {
     const errors = await openHome(page);
     await page.evaluate(() => {
       localStorage.setItem('block-blast-best-score', '321');
@@ -205,9 +203,20 @@ test.describe('Super Blocks', () => {
 
     await expect(page).toHaveURL(/\/ranking$/);
     await expect(page.locator('.ranking-best-card strong')).toHaveText('321');
-    await expect(page.locator('.standalone-score-list li')).toHaveCount(2);
-    await expect(page.getByText('Global')).toHaveCount(0);
-    await expect(page.getByText('Continue with Google')).toHaveCount(0);
+    await expect(
+      page.locator('.mode-best-card').nth(0).locator('span')
+    ).toHaveText('Classic');
+    await expect(
+      page.locator('.mode-best-card').nth(0).locator('strong')
+    ).toHaveText('321');
+    await expect(
+      page.locator('.mode-best-card').nth(1).locator('span')
+    ).toHaveText('Daily Challenge');
+    await expect(
+      page.locator('.mode-best-card').nth(1).locator('strong')
+    ).toHaveText('210');
+    await expect(page.locator('.standalone-score-list')).toHaveCount(0);
+    await expect(page.locator('.game-inner-intro')).toHaveCount(0);
     expect(errors).toEqual([]);
   });
 
