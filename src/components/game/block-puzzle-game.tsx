@@ -177,6 +177,7 @@ export function BlockPuzzleGame({ routeMode }: { routeMode?: GameMode } = {}) {
         movesWithoutClear: activeSession.movesWithoutClear,
         pieces: activeSession.pieces,
         score: activeSession.score,
+        seed: activeSession.seed,
       });
       setElapsedSeconds(activeSession.elapsedSeconds);
       setGameOver(activeSession.gameOver);
@@ -219,7 +220,8 @@ export function BlockPuzzleGame({ routeMode }: { routeMode?: GameMode } = {}) {
       movesWithoutClear: round.movesWithoutClear,
       pieces,
       score,
-      version: 3,
+      seed: round.seed,
+      version: 4,
     });
   }, [
     board,

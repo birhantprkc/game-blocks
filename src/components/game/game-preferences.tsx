@@ -77,6 +77,12 @@ export function GamePreferencesProvider({ children }: { children: ReactNode }) {
     setIsHydrated(true);
   }, []);
 
+  useEffect(() => {
+    // Keep the document language in sync so assistive technology and search
+    // engines see the interface language the player actually selected.
+    document.documentElement.lang = preferences.language;
+  }, [preferences.language]);
+
   const value = useMemo<GamePreferencesContextValue>(
     () => ({
       isHydrated,

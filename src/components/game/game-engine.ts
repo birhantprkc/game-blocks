@@ -1,5 +1,10 @@
 import { createDailyBoard } from '@/components/game/daily-board';
 import {
+  createRandomSeed,
+  createSeed,
+  createSeededRandom,
+} from '@/components/game/game-random';
+import {
   advanceComboState,
   calculateMoveScore,
 } from '@/components/game/game-scoring';
@@ -37,6 +42,7 @@ export interface GameRound {
   movesWithoutClear: number;
   pieces: Array<GamePiece | null>;
   score: number;
+  seed: number;
 }
 
 export interface GamePlacement {
@@ -221,11 +227,13 @@ function createEmptyBoard(): GameBoard {
 }
 
 function createPiecesForGeneration(
+  seed: number,
   generation: number
 ): Array<GamePiece | null> {
+  const random = createSeededRandom((seed + generation * 0x9e37_79b1) >>> 0);
   return Array.from({ length: 3 }, (_, index) => {
-    const shape = SHAPES[(generation * 3 + index * 5) % SHAPES.length];
-    const color = COLORS[(generation + index * 2) % COLORS.length];
+    const shape = SHAPES[Math.floor(random() * SHAPES.length)];
+    const color = COLORS[Math.floor(random() * COLORS.length)];
     return {
       ...shape,
       color,
@@ -234,7 +242,24 @@ function createPiecesForGeneration(
   });
 }
 
-export function createGameRound(mode: GameMode, dailyDate: string): GameRound {
+function derivePieceSeed(
+  mode: GameMode,
+  dailyDate: string,
+  seed?: number
+): number {
+  if (typeof seed === 'number') return seed >>> 0;
+  // The daily challenge must play identically for everyone on a given day,
+  // while classic games draw a fresh random sequence each time.
+  return mode === 'daily'
+    ? createSeed(`super-blocks:pieces:${dailyDate}`)
+    : createRandomSeed();
+}
+
+export function createGameRound(
+  mode: GameMode,
+  dailyDate: string,
+  seed?: number
+): GameRound {
   return {
     board: mode === 'daily' ? createDailyBoard(dailyDate) : createEmptyBoard(),
     combo: 0,
@@ -242,6 +267,7 @@ export function createGameRound(mode: GameMode, dailyDate: string): GameRound {
     movesWithoutClear: 0,
     pieces: INITIAL_PIECES.map((piece) => ({ ...piece })),
     score: 0,
+    seed: derivePieceSeed(mode, dailyDate, seed),
   };
 }
 
@@ -394,7 +420,7 @@ export function placeGamePiece(
 
   if (pieces.every((item) => item === null)) {
     generation += 1;
-    pieces = createPiecesForGeneration(generation);
+    pieces = createPiecesForGeneration(round.seed, generation);
   }
 
   const nextRound: GameRound = {
@@ -404,6 +430,7 @@ export function placeGamePiece(
     movesWithoutClear: comboState.movesWithoutClear,
     pieces,
     score: round.score + earned,
+    seed: round.seed,
   };
   const gameOver = !pieces.some(
     (nextPiece) => nextPiece && pieceHasPlacement(board, nextPiece)

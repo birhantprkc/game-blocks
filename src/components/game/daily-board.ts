@@ -1,4 +1,5 @@
 import type { GameBlockColor } from '@/components/game/game-engine';
+import { createSeed, createSeededRandom } from '@/components/game/game-random';
 
 const BOARD_SIZE = 8;
 const MIN_DAILY_BLOCKS = 8;
@@ -16,26 +17,6 @@ const BLOCK_COLORS: readonly GameBlockColor[] = [
 ];
 
 export type DailyBoard = Array<Array<GameBlockColor | null>>;
-
-function createSeed(value: string) {
-  let hash = 2_166_136_261;
-  for (const character of value) {
-    hash ^= character.charCodeAt(0);
-    hash = Math.imul(hash, 16_777_619);
-  }
-  return hash >>> 0;
-}
-
-function createSeededRandom(seed: number) {
-  let state = seed;
-  return () => {
-    state += 0x6d2b79f5;
-    let value = state;
-    value = Math.imul(value ^ (value >>> 15), value | 1);
-    value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
-    return ((value ^ (value >>> 14)) >>> 0) / 4_294_967_296;
-  };
-}
 
 function shuffle<T>(values: readonly T[], random: () => number) {
   const shuffled = [...values];

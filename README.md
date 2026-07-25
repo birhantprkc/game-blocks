@@ -63,8 +63,13 @@ Deploy the production Worker:
 pnpm run deploy
 ```
 
-The Worker is deployed to `blocks.mksaas.link`. It does not require runtime
-environment variables or Cloudflare storage bindings.
+To deploy under a different domain, set the build-time `VITE_BASE_URL`
+variable (see `.env.example`) so canonical and social metadata point at your
+own URL:
+
+```bash
+VITE_BASE_URL=https://your-domain.example pnpm run deploy
+```
 
 ## Routes
 

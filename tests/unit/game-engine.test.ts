@@ -20,7 +20,11 @@ function createPiece(
   return { cells, color: 'yellow', id, key: id };
 }
 
-function createRound(board: GameBoard, pieces: GameRound['pieces']): GameRound {
+function createRound(
+  board: GameBoard,
+  pieces: GameRound['pieces'],
+  seed = 1
+): GameRound {
   return {
     board,
     combo: 0,
@@ -28,6 +32,7 @@ function createRound(board: GameBoard, pieces: GameRound['pieces']): GameRound {
     movesWithoutClear: 0,
     pieces,
     score: 0,
+    seed,
   };
 }
 
@@ -109,8 +114,8 @@ describe('game engine', () => {
     assert.equal(resolution.round.score, 21);
   });
 
-  it('refills the tray deterministically after the third piece', () => {
-    let round = createGameRound('classic', '2026-07-17');
+  function refillGeneration(seed: number) {
+    let round = createGameRound('classic', '2026-07-17', seed);
     const moves = [
       { column: 0, pieceIndex: 0, row: 0 },
       { column: 0, pieceIndex: 1, row: 1 },
@@ -123,11 +128,32 @@ describe('game engine', () => {
       round = resolution.round;
     }
 
-    assert.equal(round.generation, 2);
+    return round;
+  }
+
+  it('refills the tray reproducibly for a given seed', () => {
+    const first = refillGeneration(7);
+    const second = refillGeneration(7);
+
+    assert.equal(first.generation, 2);
+    assert.equal(first.seed, 7);
+    assert.ok(first.pieces.every((piece) => piece !== null));
     assert.deepEqual(
-      round.pieces.map((piece) => piece?.id),
-      ['2-0-line-2-v', '2-1-tee', '2-2-line-2-h']
+      first.pieces.map((piece) => piece?.id),
+      second.pieces.map((piece) => piece?.id)
     );
+  });
+
+  it('draws a different tray for different seeds', () => {
+    const sequences = new Set(
+      [1, 2, 3, 4, 5, 6, 7, 8].map((seed) =>
+        refillGeneration(seed)
+          .pieces.map((piece) => piece?.key)
+          .join('|')
+      )
+    );
+
+    assert.ok(sequences.size > 1);
   });
 
   it('reports game over when none of the remaining pieces can fit', () => {

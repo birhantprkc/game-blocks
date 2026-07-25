@@ -13,7 +13,8 @@ export interface ActiveGameSession {
   movesWithoutClear: number;
   pieces: Array<GamePiece | null>;
   score: number;
-  version: 3;
+  seed: number;
+  version: 4;
 }
 
 export const ACTIVE_GAME_SESSION_KEY = 'block-blast-active-game';
@@ -75,7 +76,7 @@ function isActiveGameSession(
   if (!value || typeof value !== 'object') return false;
   const session = value as Partial<ActiveGameSession>;
   return (
-    session.version === 3 &&
+    session.version === 4 &&
     isGameMode(session.mode) &&
     (session.mode === 'daily'
       ? session.dailyDate === currentDailyDate
@@ -89,6 +90,7 @@ function isActiveGameSession(
     isNonNegativeInteger(session.movesWithoutClear) &&
     isNonNegativeInteger(session.elapsedSeconds) &&
     isNonNegativeInteger(session.generation) &&
+    isNonNegativeInteger(session.seed) &&
     typeof session.gameOver === 'boolean' &&
     typeof session.challengeComplete === 'boolean'
   );
