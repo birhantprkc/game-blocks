@@ -15,10 +15,11 @@ pnpm e2e
 pnpm build
 ```
 
+Cloudflare deployment is intentionally local-only; this repository does not
+use GitHub Actions for builds or deployments.
+
 ## Project boundaries
 
-- Keep the game independent from accounts and SaaS features.
-- Do not add Cloudflare storage bindings without an accepted design proposal.
 - Do not commit secrets, `.env` files, or Cloudflare credentials.
 - Do not copy code from proprietary starter kits or commercial projects.
 - Document the source and license status of every new binary asset.

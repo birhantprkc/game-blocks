@@ -3,8 +3,7 @@
 ## Project
 
 Super Blocks is a standalone block puzzle game built with TanStack Start,
-React 19, and Cloudflare Workers. It intentionally has no authentication,
-database, storage, email, payment, or SaaS dashboard.
+React 19, and Cloudflare Workers.
 
 ## Commands
 
@@ -16,6 +15,9 @@ pnpm e2e
 pnpm build
 pnpm deploy
 ```
+
+Deployment credentials are local CLI credentials only. They are not runtime
+Worker secrets and must not be uploaded with `wrangler secret put`.
 
 ## Architecture
 
