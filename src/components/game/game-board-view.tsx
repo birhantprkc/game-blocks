@@ -198,7 +198,6 @@ export function GameBoardView({
           className="game-round-link game-settings-button"
           aria-label={copy.settings}
           onClick={onPersist}
-          search={{ from: mode }}
           to="/settings"
         >
           <IconSettings aria-hidden="true" />

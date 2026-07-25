@@ -84,7 +84,6 @@ export function GameMenu({
         <Link
           className="game-corner-link"
           data-testid="home-settings"
-          search={{ from: undefined }}
           to="/settings"
         >
           <IconSettings aria-hidden="true" />

@@ -8,20 +8,28 @@ import {
   IconSparkles,
   IconVolume,
 } from '@tabler/icons-react';
-import { Link } from '@tanstack/react-router';
+import { useCanGoBack, useRouter } from '@tanstack/react-router';
 import { GAME_COPY } from '@/components/game/game-copy';
 import { GamePageFrame } from '@/components/game/game-page-frame';
 import {
   type GamePreferences,
   useGamePreferences,
 } from '@/components/game/game-preferences';
-import type { GameMode } from '@/components/game/game-storage';
 
 type BooleanPreference = Exclude<keyof GamePreferences, 'language'>;
 
-export function GameSettingsPage({ returnMode }: { returnMode?: GameMode }) {
+export function GameSettingsPage() {
+  const canGoBack = useCanGoBack();
+  const router = useRouter();
   const { preferences, updatePreference } = useGamePreferences();
   const copy = GAME_COPY[preferences.language];
+  const goBack = () => {
+    if (canGoBack) {
+      router.history.back();
+      return;
+    }
+    void router.navigate({ to: '/' });
+  };
   const rows: Array<{
     description: string;
     icon: typeof IconVolume;
@@ -64,14 +72,14 @@ export function GameSettingsPage({ returnMode }: { returnMode?: GameMode }) {
     <GamePageFrame testId="game-settings-page">
       <main className="game-inner-shell">
         <header className="game-inner-header">
-          <Link
-            aria-label={returnMode ? copy.backToGame : copy.backToHome}
+          <button
+            aria-label={copy.back}
             className="game-round-link"
-            params={returnMode ? { mode: returnMode } : undefined}
-            to={returnMode ? '/play/$mode' : '/'}
+            onClick={goBack}
+            type="button"
           >
             <IconArrowLeft aria-hidden="true" />
-          </Link>
+          </button>
           <h1>{copy.settings}</h1>
           <IconSparkles className="game-inner-header-icon" aria-hidden="true" />
         </header>

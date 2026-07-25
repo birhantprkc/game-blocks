@@ -122,6 +122,22 @@ test.describe('Super Blocks', () => {
     expect(errors).toEqual([]);
   });
 
+  test('returns from settings through browser history without source params', async ({
+    page,
+  }) => {
+    const errors = await openHome(page);
+    await page.getByTestId('start-classic').click();
+    await placePiece(page, 0, 0, 0);
+    await page.getByRole('link', { name: 'Settings' }).click();
+
+    await expect(page).toHaveURL(/\/settings$/);
+    await expect(page).not.toHaveURL(/[?&]from=/);
+    await page.getByRole('button', { name: 'Go back' }).click();
+    await expect(page).toHaveURL(/\/play\/classic$/);
+    await expect(page.getByTestId('game-score')).toHaveText('3');
+    expect(errors).toEqual([]);
+  });
+
   test('persists language and independent preferences', async ({ page }) => {
     const errors = await openHome(page);
     await page.getByTestId('home-settings').click();

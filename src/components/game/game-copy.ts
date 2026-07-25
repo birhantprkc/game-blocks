@@ -1,6 +1,7 @@
 export type GameLanguage = 'en' | 'zh';
 
 export interface GameCopy {
+  back: string;
   backHome: string;
   backToHome: string;
   backToGame: string;
@@ -93,6 +94,7 @@ export interface GameCopy {
 
 export const GAME_COPY: Record<GameLanguage, GameCopy> = {
   en: {
+    back: 'Go back',
     backHome: 'Back Home',
     backToGame: 'Back to current game',
     backToHome: 'Back to game home',
@@ -201,6 +203,7 @@ export const GAME_COPY: Record<GameLanguage, GameCopy> = {
     block: 'block',
   },
   zh: {
+    back: '返回',
     backHome: '返回首页',
     backToGame: '返回当前游戏',
     backToHome: '返回游戏首页',
