@@ -115,6 +115,16 @@ If you are a rights holder and believe an asset should be removed, please open
 an issue or contact the repository maintainer. The asset will be reviewed and
 removed when appropriate.
 
+## Author
+
+[OpenFox](https://mksaas.link/fox-x) is an independent developer building products and developer tools. His products include:
+
+- [TanStarter](https://tanstarter.dev) — Ship Faster with TanStack, Cost Less with Cloudflare.
+- [MkSaaS](https://mksaas.com) — Make Your AI SaaS Product in a Weekend.
+- [MkImage](https://mkimage.ai) — Make Any Images Possible.
+- [MkDirs](https://mkdirs.com) — Launch AI-powered directory in 30 minutes.
+- [MkDollar](https://mkdollar.com) — The all-in-one platform to help you make first dollar online.
+
 ## License
 
 Source code is released under the [MIT License](./LICENSE). Third-party assets
